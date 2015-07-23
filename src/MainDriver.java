@@ -1,4 +1,5 @@
 import Arrays.ArrayUnionIntersect;
+import Arrays.MaxDiff;
 import LinkedList.LinkedList;
 import LinkedList.kthLastList;
 
@@ -20,6 +21,10 @@ public class MainDriver {
 		//Array Union and Intersect
 		ArrayUnionIntersect UI=new ArrayUnionIntersect();
 		UI.ArrayUnionIntersectFill();
+		
+		// Maximum difference in an array given a[i]>a[j] and i>j.
+		MaxDiff md=new MaxDiff();
+		md.insertArray();
 	}
 
 }
