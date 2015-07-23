@@ -7,7 +7,7 @@ public class MainDriver {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		// Kth Largest
 		LinkedList head4 = new LinkedList(51);
 		LinkedList head3 = new LinkedList(54, head4);
@@ -17,13 +17,13 @@ public class MainDriver {
 
 		LinkedList result = kthLastList.last2KList(head, 3);
 		System.out.println("Result=" + result.getData());
-		
-		//Array Union and Intersect
-		ArrayUnionIntersect UI=new ArrayUnionIntersect();
+
+		// Array Union and Intersect
+		ArrayUnionIntersect UI = new ArrayUnionIntersect();
 		UI.ArrayUnionIntersectFill();
-		
+
 		// Maximum difference in an array given a[i]>a[j] and i>j.
-		MaxDiff md=new MaxDiff();
+		MaxDiff md = new MaxDiff();
 		md.insertArray();
 	}
 
