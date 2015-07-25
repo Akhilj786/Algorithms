@@ -3,12 +3,13 @@ import Arrays.MaxDiff;
 import Interview.StartUp;
 import LinkedList.LinkedList;
 import LinkedList.kthLastList;
+import Matrix.FindMaxGift;
 
 public class MainDriver {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-/*
+
 		// Kth Largest
 		LinkedList head4 = new LinkedList(51);
 		LinkedList head3 = new LinkedList(54, head4);
@@ -25,9 +26,16 @@ public class MainDriver {
 
 		// Maximum difference in an array given a[i]>a[j] and i>j.
 		MaxDiff md = new MaxDiff();
-		md.insertArray();*/
-		StartUp s=new StartUp();
+		md.insertArray();
+
+		// Origami Logic Interview
+		StartUp s = new StartUp();
 		s.callFunc();
+
+		// Matrix Function
+		FindMaxGift f = new FindMaxGift();
+		f.fillMatrix();
+
 	}
 
 }
