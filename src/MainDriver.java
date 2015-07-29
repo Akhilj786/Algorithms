@@ -1,6 +1,7 @@
 import Arrays.ArrayUnionIntersect;
 import Arrays.MaxDiff;
 import Arrays.MergeInterval;
+import DS.myStack;
 import DynamicProgram.LongestArithematicProgression;
 import DynamicProgram.LongestConsecutiveSequence;
 import Interview.StartUp;
@@ -76,6 +77,16 @@ public class MainDriver {
 		ReverseList rList = new ReverseList();
 		rList.reverseLinkedList(head); // Iterative
 		rList.reverseLinkedListR(null, head); // Recursive
+
+		// Stack implementation using 2 queue
+		myStack stack = new myStack();
+		stack.push(1);
+		stack.push(2);
+		System.out.println("\n\n"+stack.peek());
+		System.out.println(stack.pop());
+		System.out.println(stack.peek());
+		System.out.println(stack.pop());
+		System.out.println(stack.peek());
 	}
 
 }
