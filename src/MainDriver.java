@@ -6,6 +6,8 @@ import DynamicProgram.LongestConsecutiveSequence;
 import Interview.StartUp;
 import LinkedList.LRUCache;
 import LinkedList.LinkedList;
+import LinkedList.RemoveNode;
+import LinkedList.ReverseList;
 import LinkedList.kthLastList;
 import Matrix.FindMaxGift;
 
@@ -15,7 +17,7 @@ public class MainDriver {
 		// TODO Auto-generated method stub
 
 		// Kth Largest
-		LinkedList head4 = new LinkedList(51);
+		LinkedList head4 = new LinkedList(56);
 		LinkedList head3 = new LinkedList(54, head4);
 		LinkedList head2 = new LinkedList(56, head3);
 		LinkedList head1 = new LinkedList(10, head2);
@@ -23,6 +25,13 @@ public class MainDriver {
 
 		LinkedList result = kthLastList.last2KList(head, 3);
 		System.out.println("Result=" + result.getData());
+
+		// Remove Node
+		RemoveNode rn = new RemoveNode();
+		rn.printList(head);
+		rn.remove(head, 5);
+		System.out.println();
+		rn.printList(head);
 
 		// Array Union and Intersect
 		ArrayUnionIntersect UI = new ArrayUnionIntersect();
@@ -51,7 +60,7 @@ public class MainDriver {
 		System.out.println(lc.longestConsecutive(LcsArray));
 
 		// Implementation of LRU Cache
-		LRUCache lru=new LRUCache(5);
+		LRUCache lru = new LRUCache(5);
 		lru.set(1, 50);
 		lru.set(2, 60);
 		lru.set(3, 70);
@@ -62,7 +71,11 @@ public class MainDriver {
 		lru.printNode();
 		System.out.println(lru.get(2));
 		lru.printNode();
-		
+
+		// Reverse List Iterative
+		ReverseList rList = new ReverseList();
+		rList.reverseLinkedList(head); // Iterative
+		rList.reverseLinkedListR(null, head); // Recursive
 	}
 
 }
