@@ -9,8 +9,10 @@ import LinkedList.LRUCache;
 import LinkedList.LinkedList;
 import LinkedList.RemoveNode;
 import LinkedList.ReverseList;
+import LinkedList.checkPalindrome;
 import LinkedList.kthLastList;
 import Matrix.FindMaxGift;
+import Sorting.RadixSort;
 
 public class MainDriver {
 
@@ -18,11 +20,17 @@ public class MainDriver {
 		// TODO Auto-generated method stub
 
 		// Kth Largest
-		LinkedList head4 = new LinkedList(56);
-		LinkedList head3 = new LinkedList(54, head4);
-		LinkedList head2 = new LinkedList(56, head3);
+		LinkedList head5 = new LinkedList(5);
+		LinkedList head4 = new LinkedList(10, head5);
+		LinkedList head3 = new LinkedList(20, head4);
+		LinkedList head2 = new LinkedList(20, head3);
 		LinkedList head1 = new LinkedList(10, head2);
 		LinkedList head = new LinkedList(5, head1);
+
+		// Check Palindrome
+		// checkPalindrome isPalin = new checkPalindrome();
+		// System.out.println(isPalin.isPalindrome1(head));
+		// System.out.println(isPalin.isPalindrome2(head));
 
 		LinkedList result = kthLastList.last2KList(head, 3);
 		System.out.println("Result=" + result.getData());
@@ -82,11 +90,16 @@ public class MainDriver {
 		myStack stack = new myStack();
 		stack.push(1);
 		stack.push(2);
-		System.out.println("\n\n"+stack.peek());
+		System.out.println("\n\n" + stack.peek());
 		System.out.println(stack.pop());
 		System.out.println(stack.peek());
 		System.out.println(stack.pop());
 		System.out.println(stack.peek());
+		
+		// Radix Sort
+		int rsortArray[]={100, 4, 200, 1, 3, 2};
+		RadixSort rSort=new RadixSort();
+		System.out.println("\nMaximum Gap="+rSort.radixSort(rsortArray));
 	}
 
 }
