@@ -10,6 +10,10 @@ public class StringMain {
 		String tokens[]={"4", "13", "5", "/", "+"};
 		System.out.println(erpn.calcEvalRPN(tokens));
 		
+		//String permuate
+		PermuCombString perm=new PermuCombString();
+		perm.permutateString("ab");
+		
 	}
 
 }
