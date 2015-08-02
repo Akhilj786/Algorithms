@@ -5,11 +5,12 @@ import DS.myStack;
 import DynamicProgram.LongestArithematicProgression;
 import DynamicProgram.LongestConsecutiveSequence;
 import Interview.StartUp;
+import Interview.LinkInterview;
 import LinkedList.LRUCache;
 import LinkedList.LinkedList;
 import LinkedList.RemoveNode;
 import LinkedList.ReverseList;
-import LinkedList.checkPalindrome;
+//import LinkedList.checkPalindrome;
 import LinkedList.kthLastList;
 import Matrix.FindMaxGift;
 import Sorting.RadixSort;
@@ -95,11 +96,26 @@ public class MainDriver {
 		System.out.println(stack.peek());
 		System.out.println(stack.pop());
 		System.out.println(stack.peek());
-		
+
 		// Radix Sort
-		int rsortArray[]={100, 4, 200, 1, 3, 2};
-		RadixSort rSort=new RadixSort();
-		System.out.println("\nMaximum Gap="+rSort.radixSort(rsortArray));
+		int rsortArray[] = { 100, 4, 200, 1, 3, 2 };
+		RadixSort rSort = new RadixSort();
+		System.out.println("\nMaximum Gap=" + rSort.radixSort(rsortArray));
+
+		// LinkInterview
+		LinkInterview link = new LinkInterview();
+		int linkArray[] = { 4, 6, 3, 7 };
+		System.out.println("Sum:" + link.sumNested("{1,{4,{6}}}"));
+		System.out.println("NoofTriangle:" + link.noOfTriangle(linkArray));
+		link.puzzleArray(linkArray);
+		String checkNumber[] = { null, "abc", "+123", "-123", "+123.3", "23.4",
+				"234.5.6" };
+		for (String str : checkNumber)
+			System.out.print(link.isNumber(str) + " ");
+		int powerVar[] = { -2, -1, 0, 1, 2, 3 };     // Power Function
+		for (int i : powerVar)
+			System.out.println("\nPower=" + link.pow2(2, i));
+
 	}
 
 }
