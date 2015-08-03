@@ -3,6 +3,8 @@ package Interview;
 import java.util.Arrays;
 import java.util.Stack;
 
+import Strings.stringsDist;
+
 // LinkedIn Interview 
 public class LinkInterview {
 
@@ -193,6 +195,18 @@ public class LinkInterview {
 				return (temp * temp / a);
 		}
 
+	}
+
+	/*
+	 * Word Distance problem i.e given an array of Strings and 2 search Strings.
+	 * Find the minimum distance between them. Here we mark strings as:
+	 * String1=1;String2=2 rest of other strings as 0 in integer array. Then
+	 * call min distance calculation method on that integer array.
+	 */
+
+	public void minDist(String str[], String str1, String str2) {
+		stringsDist st = new stringsDist();
+		st.minDist(str, str1, str2);
 	}
 
 }
