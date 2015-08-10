@@ -3,6 +3,7 @@ package Interview;
 import java.util.Arrays;
 import java.util.Stack;
 
+import Strings.stringIsomorphic;
 import Strings.stringsDist;
 
 // LinkedIn Interview 
@@ -209,4 +210,54 @@ public class LinkInterview {
 		st.minDist(str, str1, str2);
 	}
 
+	/*
+	 * Check if Words are isomorphic or not.
+	 */
+	public boolean checkIsomorphic(String s1, String s2) {
+		stringIsomorphic sIso = new stringIsomorphic();
+		return (sIso.checkIsomorphic(s1, s2));
+	}
+
+	public void minWindow(String S, String T) {
+		char sArray[] = S.toCharArray();
+		char tArray[] = T.toCharArray();
+		int sLen = S.length();
+		int tLen = T.length();
+		int count = 0;
+		int needToFind[] = new int[256];
+		int minWindowBegin = 0;
+		int minWindowEnd = 0;
+		for (int i = 0; i < tLen; i++)
+			needToFind[tArray[i]]++;
+
+		int hasFound[] = new int[256];
+		int minWindowLen = Integer.MAX_VALUE;
+		for (int begin = 0, end = 0; end < sLen; end++) {
+			if (needToFind[sArray[end]] == 0)
+				continue;
+			hasFound[sArray[end]]++;
+			if (hasFound[sArray[end]] <= needToFind[sArray[end]])
+				count++;
+			if (count == tLen) {
+				// advance begin index as far right as possible,
+				// stop when advancing breaks window constraint.
+				while (needToFind[sArray[begin]] == 0
+						|| hasFound[sArray[begin]] > needToFind[sArray[begin]]) {
+					if (hasFound[sArray[begin]] > needToFind[sArray[begin]])
+						hasFound[sArray[begin]]--;
+					begin++;
+				}
+
+				// update minWindow if a minimum length is met
+				int windowLen = end - begin + 1;
+				if (windowLen < minWindowLen) {
+					minWindowBegin = begin;
+					minWindowEnd = end;
+					minWindowLen = windowLen;
+				} // end if
+			}
+		}
+		System.out.println("Minimum window="+(minWindowLen));
+		System.out.println(S.substring(minWindowBegin,minWindowEnd));
+	}
 }

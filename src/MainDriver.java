@@ -4,6 +4,7 @@ import Arrays.MaxDiff;
 import Arrays.MergeInterval;
 import Arrays.primeNumber;
 import Arrays.repeatingNum;
+import DS.RandomSet;
 import DS.myStack;
 import DynamicProgram.LongestArithematicProgression;
 import DynamicProgram.LongestConsecutiveSequence;
@@ -17,6 +18,10 @@ import LinkedList.ReverseList;
 import LinkedList.kthLastList;
 import Matrix.FindMaxGift;
 import Sorting.RadixSort;
+import Trees.OrderStatsTree;
+import Trees.OrderStatsTreeCall;
+import Trees.TreeNode;
+import Trees.TreeNodeCall;
 
 public class MainDriver {
 
@@ -47,8 +52,8 @@ public class MainDriver {
 
 		// repeatingNum
 		repeatingNum rNum = new repeatingNum();
-		int array1[] = { 10, 1, 2, 3, 10,2,2,3,3 };
-		int array2[] = { 1, 2, 1, 3,2,2 };
+		int array1[] = { 10, 1, 2, 3, 10, 2, 2, 3, 3 };
+		int array2[] = { 1, 2, 1, 3, 2, 2 };
 		rNum.array = array1;
 		rNum.printRepeating3(rNum.array);
 		rNum.array = array2;
@@ -122,7 +127,9 @@ public class MainDriver {
 		RadixSort rSort = new RadixSort();
 		System.out.println("\nMaximum Gap=" + rSort.radixSort(rsortArray));
 
-		// LinkInterview
+		/*
+		 * LinkInterview
+		 */
 		LinkInterview link = new LinkInterview();
 		int linkArray[] = { 4, 6, 3, 7 };
 		System.out.println("Sum:" + link.sumNested("{1,{4,{6}}}"));
@@ -135,10 +142,50 @@ public class MainDriver {
 		int powerVar[] = { -2, -1, 0, 1, 2, 3 }; // Power Function
 		for (int i : powerVar)
 			System.out.println("\nPower=" + link.pow2(2, i));
+		// Minimum Window to find T in substring of S
+		link.minWindow("ADOBECODEBANC", "ABC");
 
 		// Misc
 		evaluateExpression evaluateE = new evaluateExpression();
 		System.out.println("Postfix:" + evaluateE.evaluatePostfix("2 3 +"));
+
+		RandomSet<Integer> rSet = new RandomSet<Integer>();
+		rSet.add(10);
+		rSet.add(20);
+		rSet.add(30);
+		rSet.add(40);
+		rSet.print();
+		rSet.remove(40);
+		rSet.print();
+		rSet.removeRandom();
+		rSet.print();
+
+		// Trees
+		TreeNode root1 = new TreeNode(10);
+		TreeNodeCall.insert(root1, 5);
+		TreeNodeCall.insert(root1, 15);
+		// TreeNodeCall.inorderTravesal(root1);
+		System.out.println();
+		OrderStatsTree root2 = new OrderStatsTree(10);
+		OrderStatsTreeCall.insert(root2, 5);
+		OrderStatsTreeCall.insert(root2, 15);
+		OrderStatsTreeCall.insert(root2, 1);
+		OrderStatsTreeCall.insert(root2, 9);
+		OrderStatsTreeCall.insert(root2, 19);
+		OrderStatsTreeCall.insert(root2, 11);
+		OrderStatsTreeCall.arrangeSize(root2);
+		OrderStatsTreeCall.inorderPrintSize(root2); // Print no of elements down
+													// the subtree
+		for (int i = 1; i < 8; i++)
+			System.out.println("At:" + OrderStatsTreeCall.selectIth(root2, i)); // Smallest
+																				// Ith
+																				// No
+		int array[] = { 10, 5, 15, 1, 9, 11, 19 };
+		for (int num : array) {
+			OrderStatsTree temp = new OrderStatsTree(num);// Rank of Xth Node
+			System.out.println(num + "->"
+					+ OrderStatsTreeCall.getRank(root2, temp));
+		}
 
 	}
 
