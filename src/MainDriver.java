@@ -8,6 +8,7 @@ import DS.RandomSet;
 import DS.myStack;
 import DynamicProgram.LongestArithematicProgression;
 import DynamicProgram.LongestConsecutiveSequence;
+import Graph.Graph;
 import Interview.StartUp;
 import Interview.LinkInterview;
 import LinkedList.LRUCache;
@@ -26,7 +27,6 @@ import Trees.TreeNodeCall;
 public class MainDriver {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		/*
 		 * Arrays packages
@@ -187,6 +187,15 @@ public class MainDriver {
 					+ OrderStatsTreeCall.getRank(root2, temp));
 		}
 
+		// Graph
+		GraphClass();
+
+	}
+
+	public static void GraphClass() {
+		Graph g = new Graph(7, 10);
+		g.fillGraph();
+		System.out.println("S->E=" + g.dijsktraAlgo(2, 4));
 	}
 
 }
