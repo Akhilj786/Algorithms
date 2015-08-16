@@ -2,6 +2,7 @@ import misc.evaluateExpression;
 import Arrays.ArrayUnionIntersect;
 import Arrays.MaxDiff;
 import Arrays.MergeInterval;
+import Arrays.PythagorasTriplet;
 import Arrays.primeNumber;
 import Arrays.repeatingNum;
 import DS.RandomSet;
@@ -32,26 +33,23 @@ public class MainDriver {
 		 * Arrays packages
 		 */
 
-		// Array Union and Intersect
-		ArrayUnionIntersect UI = new ArrayUnionIntersect();
+		ArrayUnionIntersect UI = new ArrayUnionIntersect();// Array Union and
+															// Intersect
 		UI.ArrayUnionIntersectFill();
 
-		// Maximum difference in an array given a[i]>a[j] and i>j.
-		MaxDiff md = new MaxDiff();
+		MaxDiff md = new MaxDiff(); // Maximum difference in an array given
+									// a[i]>a[j] and i>j.
 		md.insertArray();
 
-		// Merge Interval
-		MergeInterval mi = new MergeInterval();
+		MergeInterval mi = new MergeInterval(); // Merge Interval
 		mi.fillInterval();
 		LongestArithematicProgression lap = new LongestArithematicProgression();
 		lap.fillArray();
 
-		// Prime Number
-		primeNumber pnum = new primeNumber();
+		primeNumber pnum = new primeNumber(); // Prime Number
 		pnum.findPrimenoSpace(15);
 
-		// repeatingNum
-		repeatingNum rNum = new repeatingNum();
+		repeatingNum rNum = new repeatingNum(); // repeatingNum
 		int array1[] = { 10, 1, 2, 3, 10, 2, 2, 3, 3 };
 		int array2[] = { 1, 2, 1, 3, 2, 2 };
 		rNum.array = array1;
@@ -59,8 +57,12 @@ public class MainDriver {
 		rNum.array = array2;
 		rNum.printRepeating4(rNum.array);
 
-		// Kth Largest
-		LinkedList head5 = new LinkedList(5);
+		int pyArray[] = { 3, 1, 4, 6, 5 };
+		PythagorasTriplet ptriplet = new PythagorasTriplet();// Pythagoras
+																// Triplet
+		ptriplet.findPythagoras(pyArray);
+
+		LinkedList head5 = new LinkedList(5); // Kth Largest
 		LinkedList head4 = new LinkedList(10, head5);
 		LinkedList head3 = new LinkedList(20, head4);
 		LinkedList head2 = new LinkedList(20, head3);
@@ -195,7 +197,8 @@ public class MainDriver {
 	public static void GraphClass() {
 		Graph g = new Graph(7, 10);
 		g.fillGraph();
-		System.out.println("S->E=" + g.dijsktraAlgo(2, 4));
+		System.out.println("Minimum Distance:" + g.touristGuide(1, 6, 99));
+		// System.out.println("S->E=" + g.dijsktraAlgo(2, 4));
 	}
 
 }

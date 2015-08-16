@@ -104,4 +104,15 @@ public class Graph {
 			}
 		}
 	}
+
+	public double touristGuide(int source, int destination,int noPassenger) {
+		for (int k = 0; k < graph.length; k++)
+			for (int i = 0; i < graph.length; i++)
+				for (int j = 0; j < graph.length; j++)
+					graph[i][j] = Math.max(graph[i][j],
+							Math.min(graph[i][k], graph[k][j]));
+		//return graph[source][destination]; //Minimum Distane along the path
+		
+		return  (Math.ceil(noPassenger/((graph[source][destination]-1)*1.0)));
+	}
 }
