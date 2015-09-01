@@ -3,6 +3,7 @@ import Arrays.ArrayUnionIntersect;
 import Arrays.MaxDiff;
 import Arrays.MergeInterval;
 import Arrays.PythagorasTriplet;
+import Arrays.ThreeArrayMinVal;
 import Arrays.primeNumber;
 import Arrays.repeatingNum;
 import DS.RandomSet;
@@ -22,6 +23,7 @@ import Matrix.FindMaxGift;
 import Sorting.RadixSort;
 import Trees.OrderStatsTree;
 import Trees.OrderStatsTreeCall;
+import Trees.TreeCheck;
 import Trees.TreeNode;
 import Trees.TreeNodeCall;
 
@@ -62,6 +64,10 @@ public class MainDriver {
 																// Triplet
 		ptriplet.findPythagoras(pyArray);
 
+		ThreeArrayMinVal MinArrays = new ThreeArrayMinVal();
+		System.out.println("3 Arrays Minimum Sum:" + MinArrays.minimumVal());
+
+		// LinkedList
 		LinkedList head5 = new LinkedList(5); // Kth Largest
 		LinkedList head4 = new LinkedList(10, head5);
 		LinkedList head3 = new LinkedList(20, head4);
@@ -163,10 +169,16 @@ public class MainDriver {
 		rSet.print();
 
 		// Trees
-		TreeNode root1 = new TreeNode(10);
-		TreeNodeCall.insert(root1, 5);
-		TreeNodeCall.insert(root1, 15);
-		// TreeNodeCall.inorderTravesal(root1);
+		TreeNode root1 = new TreeNode(12);
+		TreeNodeCall.insert(root1, 10);
+		TreeNodeCall.insert(root1, 30);
+		TreeNodeCall.insert(root1, 11);
+		TreeNodeCall.insert(root1, 40);
+		TreeNodeCall.leftView(root1);
+		TreeNodeCall.verticalOrder(root1);
+		System.out.println("Is this BT Complete:"+TreeCheck.isComplete(root1));
+		
+		// Order Statistics Tree:
 		System.out.println();
 		OrderStatsTree root2 = new OrderStatsTree(10);
 		OrderStatsTreeCall.insert(root2, 5);
