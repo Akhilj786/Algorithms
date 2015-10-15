@@ -13,6 +13,7 @@ import DynamicProgram.LongestConsecutiveSequence;
 import Graph.Graph;
 import Interview.StartUp;
 import Interview.LinkInterview;
+import LinkedList.Findcycle;
 import LinkedList.LRUCache;
 import LinkedList.LinkedList;
 import LinkedList.RemoveNode;
@@ -74,7 +75,14 @@ public class MainDriver {
 		LinkedList head2 = new LinkedList(20, head3);
 		LinkedList head1 = new LinkedList(10, head2);
 		LinkedList head = new LinkedList(5, head1);
-
+		
+		// Check if linkedlist contains a cycle
+		Findcycle iscycle= new Findcycle();
+		LinkedList res=iscycle.findCycle(head);
+		System.out.println("--Is there cycle %s -- "+res);
+		
+		
+		
 		// Check Palindrome
 		// checkPalindrome isPalin = new checkPalindrome();
 		// System.out.println(isPalin.isPalindrome1(head));
