@@ -111,4 +111,17 @@ public class TreeNodeCall {
 	 * }
 	 */
 
+	public static TreeNode getMaxNode(TreeNode x){
+		while(x.right!=null){
+			x=x.right;
+		}
+		return x;
+	}
+	
+	public static TreeNode getMinNode(TreeNode x){
+		while(x.left!=null){
+			x=x.left;
+		}
+		return x;
+	}
 }

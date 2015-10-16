@@ -185,6 +185,7 @@ public class MainDriver {
 		TreeNodeCall.leftView(root1);
 		TreeNodeCall.verticalOrder(root1);
 		System.out.println("Is this BT Complete:"+TreeCheck.isComplete(root1));
+		System.out.println("Is this BST:"+TreeCheck.isBST(root1));
 		
 		// Order Statistics Tree:
 		System.out.println();

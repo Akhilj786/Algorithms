@@ -21,4 +21,15 @@ public class TreeCheck {
 			return(isFull(root.left) && isFull(root.right));
 		return false;
 	}
+	
+	public static boolean isBST(TreeNode root){
+		if(root==null)
+			return true;
+		if(root.left!=null && TreeNodeCall.getMaxNode(root.left).data>root.data)
+			return false;
+		if(root.right!=null && TreeNodeCall.getMinNode(root.right).data<=root.data)
+			return false;
+		
+		return(isBST(root.left) && isBST(root.right));
+	}
 }
