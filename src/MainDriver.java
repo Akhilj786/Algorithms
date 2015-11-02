@@ -35,7 +35,7 @@ public class MainDriver {
 		/*
 		 * Arrays packages
 		 */
-
+/*
 		ArrayUnionIntersect UI = new ArrayUnionIntersect();// Array Union and
 															// Intersect
 		UI.ArrayUnionIntersectFill();
@@ -127,17 +127,18 @@ public class MainDriver {
 		ReverseList rList = new ReverseList();
 		rList.reverseLinkedList(head); // Iterative
 		rList.reverseLinkedListR(null, head); // Recursive
-
+*/
 		// Stack implementation using 2 queue
 		myStack stack = new myStack();
 		stack.push(1);
 		stack.push(2);
-		System.out.println("\n\n" + stack.peek());
-		System.out.println(stack.pop());
-		System.out.println(stack.peek());
-		System.out.println(stack.pop());
-		System.out.println(stack.peek());
-
+		System.out.println("\n\n" + stack.peek1());
+		System.out.println(stack.pop1());
+		System.out.println(stack.peek1());
+		System.out.println(stack.peek1());
+		System.out.println(stack.pop1());
+		
+/*
 		// Radix Sort
 		int rsortArray[] = { 100, 4, 200, 1, 3, 2 };
 		RadixSort rSort = new RadixSort();
@@ -146,7 +147,7 @@ public class MainDriver {
 		/*
 		 * LinkInterview
 		 */
-		LinkInterview link = new LinkInterview();
+/*		LinkInterview link = new LinkInterview();
 		int linkArray[] = { 4, 6, 3, 7 };
 		System.out.println("Sum:" + link.sumNested("{1,{4,{6}}}"));
 		System.out.println("NoofTriangle:" + link.noOfTriangle(linkArray));
@@ -212,7 +213,7 @@ public class MainDriver {
 
 		// Graph
 		GraphClass();
-
+*/
 	}
 
 	public static void GraphClass() {

@@ -10,8 +10,12 @@ package Strings;
  */
 
 public class PermuCombString {
+	
+	public static void main(String args[]){
+		permutateString("abc");
+	}
 
-	public void permutateString(String str) {
+	public  static void permutateString(String str) {
 		permuateHelper1("", str);
 		System.out.println();
 		permuateHelper2("", str);
@@ -23,7 +27,7 @@ public class PermuCombString {
 		permuateHelper5("", "abcde",0, 3);
 	}
 
-	public void permuateHelper1(String prefix, String str) {
+	public  static void permuateHelper1(String prefix, String str) {
 		int len = str.length();
 
 		if (len == 0) {
@@ -37,7 +41,7 @@ public class PermuCombString {
 
 	}
 
-	public void permuateHelper2(String prefix, String str) {
+	public static void permuateHelper2(String prefix, String str) {
 		int len = str.length();
 
 		System.out.print(prefix + " ");
@@ -49,7 +53,7 @@ public class PermuCombString {
 
 	}
 
-	public void permuateHelper3(String prefix, String str, int k) {
+	public static void permuateHelper3(String prefix, String str, int k) {
 		int len = str.length();
 		System.out.print(prefix + " ");
 
@@ -60,7 +64,7 @@ public class PermuCombString {
 
 	}
 
-	public void permuateHelper4(String prefix, String str, int k) {
+	public static void permuateHelper4(String prefix, String str, int k) {
 		int len = str.length();
 
 		if (k == prefix.length())
@@ -72,7 +76,7 @@ public class PermuCombString {
 
 	}
 	
-	public void permuateHelper5(String prefix, String str,int p, int k) {
+	public  static void permuateHelper5(String prefix, String str,int p, int k) {
 		int len = str.length();
 
 		if (k == prefix.length())
