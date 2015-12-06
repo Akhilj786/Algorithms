@@ -4,7 +4,7 @@ public class SplitOddEven {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int array[]={1,2,4,6,9,11,13,14};
+		int array[]={4};
 		splitOddEven(array);
 	}
 

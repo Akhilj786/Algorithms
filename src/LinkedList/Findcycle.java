@@ -8,24 +8,32 @@ public class Findcycle {
 		LinkedList fast = Head;
 		LinkedList slow = Head;
 		boolean flag = false;
-		while (fast.next != null) {
-			if (flag == true && fast == slow) {
-				flag = false;
+		while (fast!=null && fast.next != null) {
+			fast=fast.next.next;
+			slow=slow.next;
+			if(fast==slow)
 				break;
-
-			}
-			flag = true;
-			fast = fast.next.next;
-			slow = slow.next;
 		}
-
-		if (flag)
+		
+		if(fast==null)
 			return null;
-		slow = Head;
-		while (slow != fast) {
-			slow = slow.next;
-			fast = fast.next;
+		slow=Head;
+		while(fast!=slow){
+			fast=fast.next;
+			slow=slow.next;
 		}
 		return slow;
+	}
+	
+	public int getMedianSortedList(LinkedList head1 ){
+		LinkedList fast=head1;
+		LinkedList slow=head1;
+		while(fast!=null && fast.next!=null){
+			slow=slow.next;
+			fast=fast.next.next;
+			if(fast==slow)
+				break;
+		}
+		return fast.data;
 	}
 }

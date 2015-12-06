@@ -19,8 +19,9 @@ public class MergeInterval {
 
 		Collections.sort(list, new pointSort());
 		// System.out.println(list);
-		System.out.println(mergeAllInterval(list));
-
+		//System.out.println(mergeAllInterval(list));
+		Point p = largestInterval(mergeAllInterval(list));
+		System.out.println("<" + p.x + "," + p.y + ">");
 	}
 
 	public Stack<Point> mergeAllInterval(ArrayList<Point> list) {
@@ -55,11 +56,31 @@ public class MergeInterval {
 
 		return flag;
 	}
+
+	public Point largestInterval(Stack<Point> stack) {
+		Point p = null;
+		int diffMax = Integer.MIN_VALUE;
+		for (int i = 0; i < stack.size(); i++) {
+			Point temp = stack.get(i);
+			int diff = Math.abs(temp.x - temp.y);
+			if (diff > diffMax) {
+				diffMax = diff;
+				p = temp;
+			}
+
+		}
+
+		return p;
+	}
 }
 
 class Point {
 	int x;
 	int y;
+
+	public Point() {
+
+	}
 
 	public Point(int x, int y) {
 		this.x = x;

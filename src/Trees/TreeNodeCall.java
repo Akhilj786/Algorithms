@@ -1,12 +1,13 @@
 package Trees;
 
+import java.util.ArrayDeque;
 import java.util.Hashtable;
 import java.util.LinkedList;
-
+import java.util.Queue;
 import java.util.TreeMap;
 
 public class TreeNodeCall {
-	//public static TreeNode root = null;
+	// public static TreeNode root = null;
 	static int maxLevel = 0; // Tracks Level change
 	// Map for storing horizontal distance between root and elements.
 	static TreeMap<Integer, LinkedList<Integer>> VerticalMap = new TreeMap<Integer, LinkedList<Integer>>();
@@ -35,7 +36,63 @@ public class TreeNodeCall {
 			System.out.print(root.data + " ");
 			inorderTravesal(root.right);
 		}
-		
+
+	}
+
+	public static void leftViewIterative(TreeNode root) {
+		Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
+		queue.add(root);
+		if (!queue.isEmpty())
+			System.out.println(queue.peek().data);
+		int currentCount = 1;
+		int childCount = 0;
+		while (!queue.isEmpty()) {
+			TreeNode temp = queue.poll();
+			currentCount--;
+			if (temp.left != null) {
+				queue.add(temp.left);
+				childCount++;
+			}
+			if (temp.right != null) {
+				queue.add(temp.right);
+				childCount++;
+			}
+			if (currentCount == 0) {
+				if (childCount > 0) {
+					System.out.print(queue.peek().data+" ");
+					currentCount = childCount;
+					childCount = 0;
+				}
+			}
+		}
+	}
+	
+	
+	public static void rightViewIterative(TreeNode root) {
+		Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
+		queue.add(root);
+
+		int currentCount = 1;
+		int childCount = 0;
+		while (!queue.isEmpty()) {
+			TreeNode temp = queue.poll();
+			currentCount--;
+			if (temp.left != null) {
+				queue.add(temp.left);
+				childCount++;
+			}
+			if (temp.right != null) {
+				queue.add(temp.right);
+				childCount++;
+			}
+			if (currentCount == 0) {
+			//	if (childCount > 0) {
+					System.out.print(temp.data+" ");
+					currentCount = childCount;
+					childCount = 0;
+				//}
+			}
+		}
 	}
 
 	public static void leftView(TreeNode root) {
@@ -53,7 +110,6 @@ public class TreeNodeCall {
 		}
 		leftViewUtil(root.left, level + 1);
 		leftViewUtil(root.right, level + 1);
-		
 
 	}
 
@@ -97,6 +153,7 @@ public class TreeNodeCall {
 			verticalOrderUtil(root.left, hDist - 1);
 		}
 	}
+
 	/*
 	 * public static void bottomView(TreeNode root) { bottomViewUtil(root, 0);
 	 * System.out.println("Bottom View:"); for (int i : Bottommap.keySet()) {
@@ -111,17 +168,44 @@ public class TreeNodeCall {
 	 * }
 	 */
 
-	public static TreeNode getMaxNode(TreeNode x){
-		while(x.right!=null){
-			x=x.right;
+	public static TreeNode getMaxNode(TreeNode x) {
+		while (x.right != null) {
+			x = x.right;
 		}
 		return x;
 	}
-	
-	public static TreeNode getMinNode(TreeNode x){
-		while(x.left!=null){
-			x=x.left;
+
+	public static TreeNode getMinNode(TreeNode x) {
+		while (x.left != null) {
+			x = x.left;
 		}
 		return x;
+	}
+
+	public static void printByLevel(TreeNode root) {
+		if (root == null)
+			return;
+		Queue<TreeNode> q = new ArrayDeque<>();
+		q.offer(root);
+		int count = 1;
+		int childCount = 0;
+		while (!q.isEmpty()) {
+			TreeNode temp = q.poll();
+			count--;
+			System.out.print(temp.data + " ");
+			if (temp.left != null) {
+				q.offer(temp.left);
+				childCount++;
+			}
+			if (temp.right != null) {
+				q.offer(temp.right);
+				childCount++;
+			}
+			if (count == 0) {
+				count = childCount;
+				childCount = 0;
+				System.out.println();
+			}
+		}
 	}
 }

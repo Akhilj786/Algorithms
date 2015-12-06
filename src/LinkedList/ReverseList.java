@@ -4,8 +4,7 @@ public class ReverseList {
 	ExtendFuncList xFunc = new ExtendFuncList();
 
 	public void reverseLinkedList(LinkedList head) {
-		if (head == null || head.next == null)
-			return;
+		
 		LinkedList prev = null;
 		LinkedList current = head;
 		while (current != null) {

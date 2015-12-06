@@ -22,6 +22,7 @@ import LinkedList.ReverseList;
 import LinkedList.kthLastList;
 import Matrix.FindMaxGift;
 import Sorting.RadixSort;
+import Trees.IsBalanced;
 import Trees.OrderStatsTree;
 import Trees.OrderStatsTreeCall;
 import Trees.TreeCheck;
@@ -46,7 +47,7 @@ public class MainDriver {
 
 		MergeInterval mi = new MergeInterval(); // Merge Interval
 		mi.fillInterval();
-		LongestArithematicProgression lap = new LongestArithematicProgression();
+		/*	LongestArithematicProgression lap = new LongestArithematicProgression();
 		lap.fillArray();
 
 		primeNumber pnum = new primeNumber(); // Prime Number
@@ -69,19 +70,19 @@ public class MainDriver {
 		System.out.println("3 Arrays Minimum Sum:" + MinArrays.minimumVal());
 
 		// LinkedList
-		LinkedList head5 = new LinkedList(5); // Kth Largest
+	*/		LinkedList head5 = new LinkedList(5); // Kth Largest
 		LinkedList head4 = new LinkedList(10, head5);
 		LinkedList head3 = new LinkedList(20, head4);
 		LinkedList head2 = new LinkedList(20, head3);
 		LinkedList head1 = new LinkedList(10, head2);
 		LinkedList head = new LinkedList(5, head1);
-		
+	
 		// Check if linkedlist contains a cycle
 		Findcycle iscycle= new Findcycle();
 		LinkedList res=iscycle.findCycle(head);
 		System.out.println("--Is there cycle %s -- "+res);
 		
-		
+		/*
 		
 		// Check Palindrome
 		// checkPalindrome isPalin = new checkPalindrome();
@@ -127,7 +128,7 @@ public class MainDriver {
 		ReverseList rList = new ReverseList();
 		rList.reverseLinkedList(head); // Iterative
 		rList.reverseLinkedListR(null, head); // Recursive
-*/
+
 		// Stack implementation using 2 queue
 		myStack stack = new myStack();
 		stack.push(1);
@@ -176,19 +177,30 @@ public class MainDriver {
 		rSet.print();
 		rSet.removeRandom();
 		rSet.print();
-
+*/
 		// Trees
 		TreeNode root1 = new TreeNode(12);
 		TreeNodeCall.insert(root1, 10);
 		TreeNodeCall.insert(root1, 30);
 		TreeNodeCall.insert(root1, 11);
 		TreeNodeCall.insert(root1, 40);
+		
 		TreeNodeCall.leftView(root1);
 		TreeNodeCall.verticalOrder(root1);
+		System.out.println("\nLeftView Iterative");
+		TreeNodeCall.leftViewIterative(root1);
+		System.out.println("\nLeftView Iterative");
+		
+		System.out.println("\nLeftView Iterative");
+		TreeNodeCall.rightViewIterative(root1);
+		System.out.println("\nLeftView Iterative");
+		
+		System.out.println();TreeNodeCall.printByLevel(root1);
 		System.out.println("Is this BT Complete:"+TreeCheck.isComplete(root1));
 		System.out.println("Is this BST:"+TreeCheck.isBST(root1));
+		System.out.println("IS Balanced:"+ new IsBalanced().isBalanced(root1));
 		
-		// Order Statistics Tree:
+	/*	// Order Statistics Tree:
 		System.out.println();
 		OrderStatsTree root2 = new OrderStatsTree(10);
 		OrderStatsTreeCall.insert(root2, 5);
