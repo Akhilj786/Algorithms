@@ -3,6 +3,7 @@ package DS;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+// Stack using queue
 public class myStack {
 	public Queue<Integer> q1 = new ArrayDeque<Integer>();
 	public Queue<Integer> q2 = new ArrayDeque<Integer>();
