@@ -33,11 +33,12 @@ public class LinkedListMain {
 		
 		System.out.println();
 		AddList addHead=new AddList();
-		new ExtendFuncList().printList(addHead.addList(head1, head11)); 
-		
-		
-		
-		
+		new ExtendFuncList().printList(addHead.addList(head1, head11));
+
+		System.out.println();
+		UnionIntersectionList UIList=new UnionIntersectionList();
+		System.out.println(UIList.union(head1,head11)); 
+		System.out.println(UIList.intersect(head1,head11)); 
 	}
 
 }

@@ -35,16 +35,6 @@ public class FindMedianSortedList {
 		head5.next=head;
 	
 		// Check if linkedlist contains a cycle
-	
-	
 		System.out.println(getMedianSortedList(head3));
 	}
-	
-	
-
-	
-	
-	
-	
-	
 }
