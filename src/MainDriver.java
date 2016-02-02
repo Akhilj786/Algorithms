@@ -199,6 +199,11 @@ public class MainDriver {
 		System.out.println("Is this BT Complete:"+TreeCheck.isComplete(root1));
 		System.out.println("Is this BST:"+TreeCheck.isBST(root1));
 		System.out.println("IS Balanced:"+ new IsBalanced().isBalanced(root1));
+
+		System.out.println("\n Start distance node");
+		TreeNodeCall.atGivenLevel(root1,1);
+		TreeNodeCall.atGivenLevel(root1,2);
+		System.out.println("\n End distance node");
 		
 	/*	// Order Statistics Tree:
 		System.out.println();

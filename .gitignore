@@ -1,1 +1,14 @@
 /bin
+*.DS_Store
+
+#Project files
+[Bb]uild/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+#Class File
+*.class
+

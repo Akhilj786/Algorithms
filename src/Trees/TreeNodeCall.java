@@ -38,6 +38,50 @@ public class TreeNodeCall {
 		}
 
 	}
+	//Print all Nodes at a given distance from a starting Node in a binary tree
+	public static void atGivenLevel(TreeNode root,int dist){
+		Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
+		if(root==null)
+			return;
+		queue.add(root);
+		if (dist==1){
+			System.out.println(queue.peek().data);
+			return;
+		}
+		int height=1;
+
+		int currentCount = 1;
+		int childCount = 0;
+		while (!queue.isEmpty()) {
+			TreeNode temp = queue.poll();
+			currentCount--;
+			if (temp.left != null) {
+				queue.add(temp.left);
+				childCount++;
+			}
+			if (temp.right != null) {
+				queue.add(temp.right);
+				childCount++;
+			}
+			if (currentCount == 0) {
+					height++;
+					currentCount = childCount;
+					childCount = 0;
+					if(height==dist){
+						printQueue(queue);
+						return;
+					}
+					//System.out.print(queue.peek().data+" ");
+
+				
+			}
+		}
+	}
+	public static void printQueue(Queue<TreeNode> queue){
+		while(!queue.isEmpty()){
+			System.out.print(queue.poll().data+" ");
+		}
+	}
 
 	public static void leftViewIterative(TreeNode root) {
 		Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
