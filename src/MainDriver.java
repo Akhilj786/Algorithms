@@ -23,6 +23,7 @@ import LinkedList.kthLastList;
 import Matrix.FindMaxGift;
 import Sorting.RadixSort;
 import Trees.IsBalanced;
+import Trees.MirrorTree;
 import Trees.OrderStatsTree;
 import Trees.OrderStatsTreeCall;
 import Trees.TreeCheck;
@@ -199,7 +200,13 @@ public class MainDriver {
 		System.out.println("Is this BT Complete:"+TreeCheck.isComplete(root1));
 		System.out.println("Is this BST:"+TreeCheck.isBST(root1));
 		System.out.println("IS Balanced:"+ new IsBalanced().isBalanced(root1));
+		System.out.println("IS Full:"+ TreeCheck.isFull(root1));
 
+		System.out.println("\n-----Before Tree-----\n");TreeNodeCall.printByLevel(root1);
+		System.out.println("\n----Inverted Tree-----\n");
+		TreeNode invertTree=new MirrorTree().invertBinary(root1);
+		TreeNodeCall.printByLevel(invertTree);
+		
 		System.out.println("\n Start distance node");
 		TreeNodeCall.atGivenLevel(root1,1);
 		TreeNodeCall.atGivenLevel(root1,2);
@@ -207,7 +214,7 @@ public class MainDriver {
 		
 	/*	// Order Statistics Tree:
 		System.out.println();
-		OrderStatsTree root2 = new OrderStatsTree(10);
+		w root2 = new OrderStatsTree(10);
 		OrderStatsTreeCall.insert(root2, 5);
 		OrderStatsTreeCall.insert(root2, 15);
 		OrderStatsTreeCall.insert(root2, 1);
