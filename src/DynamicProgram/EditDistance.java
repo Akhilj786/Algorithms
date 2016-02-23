@@ -1,5 +1,6 @@
 package DynamicProgram;
 //https://web.stanford.edu/class/cs124/lec/med.pdf
+//Check if two strings are One Edit distance away.
 public class EditDistance {
 
 	public static void main(String[] args) {
