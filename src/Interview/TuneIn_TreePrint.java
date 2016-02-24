@@ -1,10 +1,14 @@
 package Interview;
 
 import java.util.ArrayList;
-
 import java.util.Hashtable;
-
 import java.util.Stack;
+
+/*
+ * "ABC"->["def","xyz"]
+ * 
+ * Print dfs format.
+ */
 
 public class TuneIn_TreePrint {
 
@@ -23,12 +27,8 @@ public class TuneIn_TreePrint {
 			mapping.put(parents[i], child);
 			
 		}
-		
 		System.out.println(mapping);
-		
 		travesal("abc", mapping);
-		
-		
 	}
 
 	public static void travesal(String root,
