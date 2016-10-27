@@ -1,35 +1,22 @@
 package Trees;
 
+/**
+ * Created by AkhilJain on 10/24/16.
+ */
 public class TreeCheck {
+    public TreeCheck() {
+    }
 
-	public static boolean isComplete(TreeNode root){
-		if(root==null)
-			return true;
-		if(root.left==null && root.right==null)
-			return true;
-		if(root.left!=null)
-			return(isComplete(root.left) && isComplete(root.right));
-		return false;
-	}
-	
-	public static boolean isFull(TreeNode root){
-		if(root==null)
-			return true;
-		if(root.left==null && root.right==null)
-			return true;
-		if(root.left!=null && root.right!=null)
-			return(isFull(root.left) && isFull(root.right));
-		return false;
-	}
-	
-	public static boolean isBST(TreeNode root){
-		if(root==null)
-			return true;
-		if(root.left!=null && TreeNodeCall.getMaxNode(root.left).data>root.data)
-			return false;
-		if(root.right!=null && TreeNodeCall.getMinNode(root.right).data<=root.data)
-			return false;
-		
-		return(isBST(root.left) && isBST(root.right));
-	}
+    public static boolean isComplete(TreeNode var0) {
+        return var0 == null?true:(var0.left == null && var0.right == null?true:(var0.left == null?false:isComplete(var0.left) && isComplete(var0.right)));
+    }
+
+    public static boolean isFull(TreeNode var0) {
+        return var0 == null?true:(var0.left == null && var0.right == null?true:(var0.left != null && var0.right != null?isFull(var0.left) && isFull(var0.right):false));
+    }
+
+    public static boolean isBST(TreeNode var0) {
+        return var0 == null?true:(var0.left != null && TreeNodeCall.getMaxNode(var0.left).data > var0.data?false:(var0.right != null && TreeNodeCall.getMinNode(var0.right).data <= var0.data?false:isBST(var0.left) && isBST(var0.right)));
+    }
 }
+

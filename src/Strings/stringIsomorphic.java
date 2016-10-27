@@ -1,28 +1,40 @@
 package Strings;
-/*
- * https://github.com/techpanja/interviewproblems/blob/master/src/strings/isomorphicstrings/Isomorphic.java
- */
 
+/**
+ * Created by AkhilJain on 10/24/16.
+ */
 import java.util.Hashtable;
 
 public class stringIsomorphic {
+    public stringIsomorphic() {
+    }
 
-	public boolean checkIsomorphic(String s1, String s2) {
-		int len1 = s1.length();
-		int len2 = s1.length();
-		if (len1 != len2)
-			return false;
-		Hashtable<Character, Character> hash = new Hashtable<>();
-		for (int i = 0; i < len1; i++) {
-			char c1 = s1.charAt(i);
-			char c2 = s2.charAt(i);
-			if ((!hash.containsKey(c1)) && (!hash.containsValue(c2)))
-				hash.put(c1, c2);
-			if (hash.get(c1) == null)
-				return false;
-			if (!hash.get(c1).equals(c2))
-				return false;
-		}
-		return true;
-	}
+    public boolean checkIsomorphic(String var1, String var2) {
+        int var3 = var1.length();
+        int var4 = var1.length();
+        if(var3 != var4) {
+            return false;
+        } else {
+            Hashtable var5 = new Hashtable();
+
+            for(int var6 = 0; var6 < var3; ++var6) {
+                char var7 = var1.charAt(var6);
+                char var8 = var2.charAt(var6);
+                if(!var5.containsKey(Character.valueOf(var7)) && !var5.containsValue(Character.valueOf(var8))) {
+                    var5.put(Character.valueOf(var7), Character.valueOf(var8));
+                }
+
+                if(var5.get(Character.valueOf(var7)) == null) {
+                    return false;
+                }
+
+                if(!((Character)var5.get(Character.valueOf(var7))).equals(Character.valueOf(var8))) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
 }
+

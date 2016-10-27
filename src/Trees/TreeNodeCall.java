@@ -1,255 +1,254 @@
 package Trees;
 
-import java.util.ArrayDeque;
-import java.util.Hashtable;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.TreeMap;
+/**
+ * Created by AkhilJain on 10/24/16.
+ */
+import java.util.*;
 
 public class TreeNodeCall {
-	// public static TreeNode root = null;
-	static int maxLevel = 0; // Tracks Level change
-	// Map for storing horizontal distance between root and elements.
-	static TreeMap<Integer, LinkedList<Integer>> VerticalMap = new TreeMap<Integer, LinkedList<Integer>>();
-	static Hashtable<Integer, Integer> Bottommap = new Hashtable<Integer, Integer>();
-	static Hashtable<Integer, Integer> Bottommap1 = new Hashtable<Integer, Integer>();
+    static int maxLevel = 0;
+    static TreeMap<Integer, LinkedList<Integer>> VerticalMap = new TreeMap();
+    static Hashtable<Integer, Integer> Bottommap = new Hashtable();
+    static Hashtable<Integer, Integer> Bottommap1 = new Hashtable();
 
-	public static void insert(TreeNode x, int data) {
-		// TreeNode newNode = new TreeNode(data);
-		if (data < x.data) {
-			if (x.left == null)
-				x.left = new TreeNode(data);
-			else
-				insert(x.left, data);
-		} else {
-			if (x.right == null)
-				x.right = new TreeNode(data);
-			else
-				insert(x.right, data);
-		}
+    public TreeNodeCall() {
+    }
 
-	}
+    public static void insert(TreeNode var0, int var1) {
+        if(var1 < var0.data) {
+            if(var0.left == null) {
+                var0.left = new TreeNode(var1);
+            } else {
+                insert(var0.left, var1);
+            }
+        } else if(var0.right == null) {
+            var0.right = new TreeNode(var1);
+        } else {
+            insert(var0.right, var1);
+        }
 
-	public static void inorderTravesal(TreeNode root) {
-		if (root != null) {
-			inorderTravesal(root.left);
-			System.out.print(root.data + " ");
-			inorderTravesal(root.right);
-		}
+    }
 
-	}
-	//Print all Nodes at a given distance from a starting Node in a binary tree
-	public static void atGivenLevel(TreeNode root,int dist){
-		Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
-		if(root==null)
-			return;
-		queue.add(root);
-		if (dist==1){
-			System.out.println(queue.peek().data);
-			return;
-		}
-		int height=1;
+    public static void inorderTravesal(TreeNode var0) {
+        if(var0 != null) {
+            inorderTravesal(var0.left);
+            System.out.print(var0.data + " ");
+            inorderTravesal(var0.right);
+        }
 
-		int currentCount = 1;
-		int childCount = 0;
-		while (!queue.isEmpty()) {
-			TreeNode temp = queue.poll();
-			currentCount--;
-			if (temp.left != null) {
-				queue.add(temp.left);
-				childCount++;
-			}
-			if (temp.right != null) {
-				queue.add(temp.right);
-				childCount++;
-			}
-			if (currentCount == 0) {
-					height++;
-					currentCount = childCount;
-					childCount = 0;
-					if(height==dist){
-						printQueue(queue);
-						return;
-					}
-					//System.out.print(queue.peek().data+" ");
+    }
 
-				
-			}
-		}
-	}
-	public static void printQueue(Queue<TreeNode> queue){
-		while(!queue.isEmpty()){
-			System.out.print(queue.poll().data+" ");
-		}
-	}
+    public static void atGivenLevel(TreeNode var0, int var1) {
+        ArrayDeque var2 = new ArrayDeque();
+        if(var0 != null) {
+            var2.add(var0);
+            if(var1 == 1) {
+                System.out.println(((TreeNode)var2.peek()).data);
+            } else {
+                int var3 = 1;
+                int var4 = 1;
+                int var5 = 0;
 
-	public static void leftViewIterative(TreeNode root) {
-		Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
-		queue.add(root);
-		if (!queue.isEmpty())
-			System.out.println(queue.peek().data);
-		int currentCount = 1;
-		int childCount = 0;
-		while (!queue.isEmpty()) {
-			TreeNode temp = queue.poll();
-			currentCount--;
-			if (temp.left != null) {
-				queue.add(temp.left);
-				childCount++;
-			}
-			if (temp.right != null) {
-				queue.add(temp.right);
-				childCount++;
-			}
-			if (currentCount == 0) {
-				if (childCount > 0) {
-					System.out.print(queue.peek().data+" ");
-					currentCount = childCount;
-					childCount = 0;
-				}
-			}
-		}
-	}
-	
-	
-	public static void rightViewIterative(TreeNode root) {
-		Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
-		queue.add(root);
+                while(!var2.isEmpty()) {
+                    TreeNode var6 = (TreeNode)var2.poll();
+                    --var4;
+                    if(var6.left != null) {
+                        var2.add(var6.left);
+                        ++var5;
+                    }
 
-		int currentCount = 1;
-		int childCount = 0;
-		while (!queue.isEmpty()) {
-			TreeNode temp = queue.poll();
-			currentCount--;
-			if (temp.left != null) {
-				queue.add(temp.left);
-				childCount++;
-			}
-			if (temp.right != null) {
-				queue.add(temp.right);
-				childCount++;
-			}
-			if (currentCount == 0) {
-			//	if (childCount > 0) {
-					System.out.print(temp.data+" ");
-					currentCount = childCount;
-					childCount = 0;
-				//}
-			}
-		}
-	}
+                    if(var6.right != null) {
+                        var2.add(var6.right);
+                        ++var5;
+                    }
 
-	public static void leftView(TreeNode root) {
-		System.out.println("Left View:");
-		leftViewUtil(root, 1);
-	}
+                    if(var4 == 0) {
+                        ++var3;
+                        var4 = var5;
+                        var5 = 0;
+                        if(var3 == var1) {
+                            printQueue(var2);
+                            return;
+                        }
+                    }
+                }
 
-	// Right view also same but just visit right subtree before left
-	public static void leftViewUtil(TreeNode root, int level) {
-		if (root == null)
-			return;
-		if (maxLevel < level) {
-			System.out.print(root.data + " ");
-			maxLevel = level;
-		}
-		leftViewUtil(root.left, level + 1);
-		leftViewUtil(root.right, level + 1);
+            }
+        }
+    }
 
-	}
+    public static void printQueue(Queue<TreeNode> var0) {
+        while(!var0.isEmpty()) {
+            System.out.print(((TreeNode)var0.poll()).data + " ");
+        }
 
-	public static void rightView(TreeNode root) {
-		System.out.println("Right View:");
-		rightViewUtil(root, 1);
-	}
+    }
 
-	public static void rightViewUtil(TreeNode root, int level) {
-		if (root == null)
-			return;
-		if (maxLevel < level) {
-			System.out.print(root.data + " ");
-			maxLevel = level;
-		}
-		leftViewUtil(root.right, level + 1);
-		leftViewUtil(root.left, level + 1);
+    public static void leftViewIterative(TreeNode var0) {
+        ArrayDeque var1 = new ArrayDeque();
+        var1.add(var0);
+        if(!var1.isEmpty()) {
+            System.out.println(((TreeNode)var1.peek()).data);
+        }
 
-	}
+        int var2 = 1;
+        int var3 = 0;
 
-	public static void verticalOrder(TreeNode root) {
-		verticalOrderUtil(root, 0);
-		System.out.println("\nVertical Order:");
-		for (int i : VerticalMap.keySet()) {
-			System.out.print(VerticalMap.get(i) + " ");
-			// Inorder to get Boundary elements Or TOP view just print first
-			// element of the list
-			// System.out.println(map.get(i).get(0));
-		}
-	}
+        while(!var1.isEmpty()) {
+            TreeNode var4 = (TreeNode)var1.poll();
+            --var2;
+            if(var4.left != null) {
+                var1.add(var4.left);
+                ++var3;
+            }
 
-	public static void verticalOrderUtil(TreeNode root, int hDist) {
-		if (root != null) {
-			LinkedList<Integer> tempList = new LinkedList<Integer>();
-			if (VerticalMap.containsKey(hDist))
-				tempList = VerticalMap.get(hDist);
-			tempList.add(root.data);
-			VerticalMap.put(hDist, tempList);
+            if(var4.right != null) {
+                var1.add(var4.right);
+                ++var3;
+            }
 
-			verticalOrderUtil(root.right, hDist + 1);
-			verticalOrderUtil(root.left, hDist - 1);
-		}
-	}
+            if(var2 == 0 && var3 > 0) {
+                System.out.print(((TreeNode)var1.peek()).data + " ");
+                var2 = var3;
+                var3 = 0;
+            }
+        }
 
-	/*
-	 * public static void bottomView(TreeNode root) { bottomViewUtil(root, 0);
-	 * System.out.println("Bottom View:"); for (int i : Bottommap.keySet()) {
-	 * System.out.print(Bottommap.get(i) + " "); } }
-	 * 
-	 * public static void bottomViewUtil(TreeNode root, int hDist) { if (root !=
-	 * null) { Bottommap.put(hDist, root.data); bottomViewUtil(root.left, hDist
-	 * - 1); bottomViewUtil(root.right, hDist + 1);
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
+    }
 
-	public static TreeNode getMaxNode(TreeNode x) {
-		while (x.right != null) {
-			x = x.right;
-		}
-		return x;
-	}
+    public static void rightViewIterative(TreeNode var0) {
+        ArrayDeque var1 = new ArrayDeque();
+        var1.add(var0);
+        int var2 = 1;
+        int var3 = 0;
 
-	public static TreeNode getMinNode(TreeNode x) {
-		while (x.left != null) {
-			x = x.left;
-		}
-		return x;
-	}
+        while(!var1.isEmpty()) {
+            TreeNode var4 = (TreeNode)var1.poll();
+            --var2;
+            if(var4.left != null) {
+                var1.add(var4.left);
+                ++var3;
+            }
 
-	public static void printByLevel(TreeNode root) {
-		if (root == null)
-			return;
-		Queue<TreeNode> q = new ArrayDeque<>();
-		q.offer(root);
-		int count = 1;
-		int childCount = 0;
-		while (!q.isEmpty()) {
-			TreeNode temp = q.poll();
-			count--;
-			System.out.print(temp.data + " ");
-			if (temp.left != null) {
-				q.offer(temp.left);
-				childCount++;
-			}
-			if (temp.right != null) {
-				q.offer(temp.right);
-				childCount++;
-			}
-			if (count == 0) {
-				count = childCount;
-				childCount = 0;
-				System.out.println();
-			}
-		}
-	}
+            if(var4.right != null) {
+                var1.add(var4.right);
+                ++var3;
+            }
+
+            if(var2 == 0) {
+                System.out.print(var4.data + " ");
+                var2 = var3;
+                var3 = 0;
+            }
+        }
+
+    }
+
+    public static void leftView(TreeNode var0) {
+        System.out.println("Left View:");
+        leftViewUtil(var0, 1);
+    }
+
+    public static void leftViewUtil(TreeNode var0, int var1) {
+        if(var0 != null) {
+            if(maxLevel < var1) {
+                System.out.print(var0.data + " ");
+                maxLevel = var1;
+            }
+
+            leftViewUtil(var0.left, var1 + 1);
+            leftViewUtil(var0.right, var1 + 1);
+        }
+    }
+
+    public static void rightView(TreeNode var0) {
+        System.out.println("Right View:");
+        rightViewUtil(var0, 1);
+    }
+
+    public static void rightViewUtil(TreeNode var0, int var1) {
+        if(var0 != null) {
+            if(maxLevel < var1) {
+                System.out.print(var0.data + " ");
+                maxLevel = var1;
+            }
+
+            leftViewUtil(var0.right, var1 + 1);
+            leftViewUtil(var0.left, var1 + 1);
+        }
+    }
+
+    public static void verticalOrder(TreeNode var0) {
+        verticalOrderUtil(var0, 0);
+        System.out.println("\nVertical Order:");
+        Iterator var1 = VerticalMap.keySet().iterator();
+
+        while(var1.hasNext()) {
+            int var2 = ((Integer)var1.next()).intValue();
+            System.out.print(VerticalMap.get(Integer.valueOf(var2)) + " ");
+        }
+
+    }
+
+    public static void verticalOrderUtil(TreeNode var0, int var1) {
+        if(var0 != null) {
+            LinkedList var2 = new LinkedList();
+            if(VerticalMap.containsKey(Integer.valueOf(var1))) {
+                var2 = (LinkedList)VerticalMap.get(Integer.valueOf(var1));
+            }
+
+            var2.add(Integer.valueOf(var0.data));
+            VerticalMap.put(Integer.valueOf(var1), var2);
+            verticalOrderUtil(var0.right, var1 + 1);
+            verticalOrderUtil(var0.left, var1 - 1);
+        }
+
+    }
+
+    public static TreeNode getMaxNode(TreeNode var0) {
+        while(var0.right != null) {
+            var0 = var0.right;
+        }
+
+        return var0;
+    }
+
+    public static TreeNode getMinNode(TreeNode var0) {
+        while(var0.left != null) {
+            var0 = var0.left;
+        }
+
+        return var0;
+    }
+
+    public static void printByLevel(TreeNode var0) {
+        if(var0 != null) {
+            ArrayDeque var1 = new ArrayDeque();
+            var1.offer(var0);
+            int var2 = 1;
+            int var3 = 0;
+
+            while(!var1.isEmpty()) {
+                TreeNode var4 = (TreeNode)var1.poll();
+                --var2;
+                System.out.print(var4.data + " ");
+                if(var4.left != null) {
+                    var1.offer(var4.left);
+                    ++var3;
+                }
+
+                if(var4.right != null) {
+                    var1.offer(var4.right);
+                    ++var3;
+                }
+
+                if(var2 == 0) {
+                    var2 = var3;
+                    var3 = 0;
+                    System.out.println();
+                }
+            }
+
+        }
+    }
 }

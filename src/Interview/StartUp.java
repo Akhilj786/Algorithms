@@ -1,95 +1,80 @@
 package Interview;
 
+/**
+ * Created by AkhilJain on 10/24/16.
+ */
 public class StartUp {
-	/*
-	 * For a starup in Menlo Park. I was asked 4 question 1) Given a matrix of
-	 * one's and zero's..find groups of ones.
-	 * http://codercareer.blogspot.com/2013/02/no-41-group-of-1s-in-matrix.html
-	 * 2) Maximum Profit in buy-sell 3) Various Combination of String 4) Binary
-	 * Search
-	 */
-	public void callFunc() {
-		int matrix[][] = { { 1, 1, 0, 0, 1 }, { 1, 0, 0, 1, 0 },
-				{ 1, 1, 0, 1, 0 }, { 0, 0, 1, 0, 0 }, };
+    public StartUp() {
+    }
 
-		System.out.println("Total Group:" + countGroups(matrix));
+    public void callFunc() {
+        int[][] var1 = new int[][]{{1, 1, 0, 0, 1}, {1, 0, 0, 1, 0}, {1, 1, 0, 1, 0}, {0, 0, 1, 0, 0}};
+        System.out.println("Total Group:" + countGroups(var1));
+        int[] var2 = new int[]{1, 2, 10, 0, 9};
+        System.out.println("Maximum Profit:" + maxProfit(var2));
+    }
 
-		int array[] = { 1, 2, 10, 0, 9 };
-		System.out.println("Maximum Profit:"+maxProfit(array));
+    public static int countGroups(int[][] var0) {
+        int var1 = 0;
+        int var2 = var0.length - 1;
+        int var3 = var0[0].length - 1;
 
-	}
+        for(int var4 = 0; var4 < var0.length; ++var4) {
+            for(int var5 = 0; var5 < var0[0].length; ++var5) {
+                if(var0[var4][var5] == 1) {
+                    makeAdjacentZero(var0, var4, var5, var2, var3);
+                    ++var1;
+                }
+            }
+        }
 
-	/*
-	 * Question1 could be solved by marking each 1's adjacent position as zero.
-	 */
+        return var1;
+    }
 
-	public static int countGroups(int matrix[][]) {
-		int result = 0;
-		int m = matrix.length - 1;
-		int n = matrix[0].length - 1;
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[0].length; j++) {
-				if (matrix[i][j] == 1) {
-					makeAdjacentZero(matrix, i, j, m, n);
-					result++;
-					// Print Groups
-					// System.out.println("I:" + (i + 1) + "J:" + (j + 1));
-				}
-			}
-		}
-		return result;
-	}
+    public static void makeAdjacentZero(int[][] var0, int var1, int var2, int var3, int var4) {
+        if(var1 < var3 && var0[var1 + 1][var2] == 1) {
+            var0[var1 + 1][var2] = 0;
+            makeAdjacentZero(var0, var1 + 1, var2, var3, var4);
+        }
 
-	public static void makeAdjacentZero(int a[][], int i, int j, int m, int n) {
-		// Down
-		if (i < m) {
-			if (a[i + 1][j] == 1) {
-				a[i + 1][j] = 0;
-				makeAdjacentZero(a, i + 1, j, m, n);
-			}
-		}
-		// Right
-		if (j < n) {
-			if (a[i][j + 1] == 1) {
-				a[i][j + 1] = 0;
-				makeAdjacentZero(a, i, j + 1, m, n);
-			}
-		}
-		// Up
-		if (i > 0) {
-			if (a[i - 1][j] == 1) {
-				a[i - 1][j] = 0;
-				makeAdjacentZero(a, i - 1, j, m, n);
-			}
-		}
-		// Left
-		if (j > 0) {
-			if (a[i][j - 1] == 1) {
-				a[i][j - 1] = 0;
-				makeAdjacentZero(a, i, j - 1, m, n);
-			}
-		}
-	}
-	
-	// Buy and sell problem
-	public static int maxProfit(int array[]) {
-		int min = array[0];
-		int sell = 0;
-		int profit = 0;
-		int buy = 0;
-		for (int i = 1; i < array.length; i++) {
-			if (array[i] - min > profit) {
-				profit = array[i] - min;
-				if (array[i] > sell) {
-					sell = array[i];
-					buy = min;
-				}
-			}
-			if (array[i] < min) {
-				min = array[i];
-			}
-		}
-		System.out.println("Buy:" + buy + " Sell:" + sell);
-		return profit;
-	}
+        if(var2 < var4 && var0[var1][var2 + 1] == 1) {
+            var0[var1][var2 + 1] = 0;
+            makeAdjacentZero(var0, var1, var2 + 1, var3, var4);
+        }
+
+        if(var1 > 0 && var0[var1 - 1][var2] == 1) {
+            var0[var1 - 1][var2] = 0;
+            makeAdjacentZero(var0, var1 - 1, var2, var3, var4);
+        }
+
+        if(var2 > 0 && var0[var1][var2 - 1] == 1) {
+            var0[var1][var2 - 1] = 0;
+            makeAdjacentZero(var0, var1, var2 - 1, var3, var4);
+        }
+
+    }
+
+    public static int maxProfit(int[] var0) {
+        int var1 = var0[0];
+        int var2 = 0;
+        int var3 = 0;
+        int var4 = 0;
+
+        for(int var5 = 1; var5 < var0.length; ++var5) {
+            if(var0[var5] - var1 > var3) {
+                var3 = var0[var5] - var1;
+                if(var0[var5] > var2) {
+                    var2 = var0[var5];
+                    var4 = var1;
+                }
+            }
+
+            if(var0[var5] < var1) {
+                var1 = var0[var5];
+            }
+        }
+
+        System.out.println("Buy:" + var4 + " Sell:" + var2);
+        return var3;
+    }
 }

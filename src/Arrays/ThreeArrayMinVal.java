@@ -1,52 +1,58 @@
 package Arrays;
 
+/**
+ * Created by AkhilJain on 10/24/16.
+ */
+
 import java.util.Arrays;
 
-//http://www.quora.com/Google-Interview-Questions/Given-three-arrays-A-B-and-C-what-is-the-best-algorithm-to-find-the-minimum-value-of-a-b-+-b-c-+-c-a-where-a-in-A-b-in-B-c-in-C
 public class ThreeArrayMinVal {
-	int array1[], array2[], array3[];
+    int[] array1 = new int[]{1, 5, 9, 11, 15};
+    int[] array2 = new int[]{6, 8, 18, 19, 25};
+    int[] array3 = new int[]{4, 7, 13, 20};
 
-	public ThreeArrayMinVal() {
-		this.array1 = new int[] { 1, 5, 9, 11, 15 };
-		this.array2 = new int[] { 6, 8, 18, 19, 25 };
-		this.array3 = new int[] { 4, 7, 13, 20 };
-	}
+    public ThreeArrayMinVal() {
+    }
 
-	public int minimumVal() {
-		int minVal = Integer.MAX_VALUE;
-		int i = 0, j = 0, k = 0;
-		Arrays.sort(array1);
-		Arrays.sort(array2);
-		Arrays.sort(array3);
-		while (i < array1.length && j < array2.length && k < array3.length) {
-			int currMin = Math.abs(array1[i] - array2[j])
-					+ Math.abs(array2[j] - array3[k])
-					+ Math.abs(array3[k] - array1[i]);
-			if (minVal > currMin) {
-				minVal = currMin;
+    public int minimumVal() {
+        int var1 = 2147483647;
+        int var2 = 0;
+        int var3 = 0;
+        int var4 = 0;
+        Arrays.sort(this.array1);
+        Arrays.sort(this.array2);
+        Arrays.sort(this.array3);
 
-			}
-			int minIndex = findMinIndex(array1[i], array2[j], array3[k]);
-			if (minIndex == array1[i])
-				i++;
-			else if (minIndex == array2[j])
-				j++;
-			else
-				k++;
-		}
-		return minVal;
-	}
+        while(var2 < this.array1.length && var3 < this.array2.length && var4 < this.array3.length) {
+            int var5 = Math.abs(this.array1[var2] - this.array2[var3]) + Math.abs(this.array2[var3] - this.array3[var4]) + Math.abs(this.array3[var4] - this.array1[var2]);
+            if(var1 > var5) {
+                var1 = var5;
+            }
 
-	public int findMinIndex(int a, int b, int c) {
-		int minIndex = a;
-		if (minIndex > b) {
-			minIndex = b;
-			if (minIndex > c)
-				minIndex = c;
-		} else {
-			if (minIndex > c)
-				minIndex = c;
-		}
-		return minIndex;
-	}
+            int var6 = this.findMinIndex(this.array1[var2], this.array2[var3], this.array3[var4]);
+            if(var6 == this.array1[var2]) {
+                ++var2;
+            } else if(var6 == this.array2[var3]) {
+                ++var3;
+            } else {
+                ++var4;
+            }
+        }
+
+        return var1;
+    }
+
+    public int findMinIndex(int var1, int var2, int var3) {
+        int var4 = var1;
+        if(var1 > var2) {
+            var4 = var2;
+            if(var2 > var3) {
+                var4 = var3;
+            }
+        } else if(var1 > var3) {
+            var4 = var3;
+        }
+
+        return var4;
+    }
 }
